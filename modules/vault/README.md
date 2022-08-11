@@ -1,3 +1,14 @@
+# AWS Backup Vault Terraform module
+
+## Usage
+
+```hcl
+module "backup" {
+  source  = "tf-cloud-modules/backup/aws"
+  name    = "test"
+}
+```
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
