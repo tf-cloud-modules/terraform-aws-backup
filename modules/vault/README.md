@@ -3,7 +3,7 @@
 ## Usage
 
 ```hcl
-module "backup" {
+module "vault" {
   source  = "tf-cloud-modules/backup/aws"
   name    = "test"
 }
