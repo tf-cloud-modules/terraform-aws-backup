@@ -20,3 +20,9 @@ variable "rules" {
   type        = any
   default     = []
 }
+
+variable "backup_selection" {
+  description = "A list of objects that selects resources for backing up."
+  type        = any
+  default     = []
+}

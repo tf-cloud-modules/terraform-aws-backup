@@ -26,6 +26,16 @@ module "plan" {
       }
     }
   }]
+  backup_selection = [{
+    name      = "test"
+    resources = ["*"]
+    condition = [{
+      string_equals = [{
+        key   = "aws:ResourceTag/env"
+        value = "test"
+      }]
+    }]
+  }]
 }
 ```
 
@@ -52,11 +62,14 @@ No modules.
 | Name | Type |
 |------|------|
 | [aws_backup_plan.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_plan) | resource |
+| [aws_backup_selection.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_selection) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_backup_selection"></a> [backup\_selection](#input\_backup\_selection) | A list of objects that selects resources for backing up. | `any` | `[]` | no |
 | <a name="input_create"></a> [create](#input\_create) | Controls if resources should be created. | `bool` | `true` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the backup plan to create. | `string` | n/a | yes |
 | <a name="input_rules"></a> [rules](#input\_rules) | A list of rule objects that specifies scheduled tasks that are used to back up a selection of resources. | `any` | `[]` | no |
