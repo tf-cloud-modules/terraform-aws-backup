@@ -4,7 +4,7 @@
 
 ```hcl
 module "vault" {
-  source  = "tf-cloud-modules/backup/aws"
+  source  = "tf-cloud-modules/backup/aws//modules/vault"
   name    = "test"
 }
 ```

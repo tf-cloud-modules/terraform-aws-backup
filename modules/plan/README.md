@@ -4,7 +4,7 @@
 
 ```hcl
 module "plan" {
-  source  = "tf-cloud-modules/plan/aws"
+  source  = "tf-cloud-modules/backup/aws//modules/plan"
   name = "test"
   rules = [{
     completion_window        = 480
