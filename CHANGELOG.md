@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-11-24
+
 ### Added
 - `region` input in both submodules, applied to all resources, for per-resource multi-region override (provider v6 feature).
 - `force_destroy` input in the `vault` module (`aws_backup_vault`, provider argument since v4.26.0).
@@ -46,7 +48,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release.
 
-[Unreleased]: https://github.com/tf-cloud-modules/terraform-aws-backup/compare/1.0.1...HEAD
+[Unreleased]: https://github.com/tf-cloud-modules/terraform-aws-backup/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/tf-cloud-modules/terraform-aws-backup/compare/1.0.1...2.0.0
 [1.0.1]: https://github.com/tf-cloud-modules/terraform-aws-backup/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/tf-cloud-modules/terraform-aws-backup/compare/0.3.1...1.0.0
 [0.3.1]: https://github.com/tf-cloud-modules/terraform-aws-backup/compare/0.3.0...0.3.1
