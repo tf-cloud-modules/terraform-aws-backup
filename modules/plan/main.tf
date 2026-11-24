@@ -1,25 +1,30 @@
 resource "aws_backup_plan" "this" {
   count = var.create ? 1 : 0
-  name  = var.name
-  tags  = var.tags
+
+  name   = var.name
+  region = var.region
+  tags   = var.tags
 
   dynamic "rule" {
     for_each = var.rules
     content {
-      completion_window        = lookup(rule.value, "completion_window", null)
-      enable_continuous_backup = lookup(rule.value, "enable_continuous_backup", null)
-      recovery_point_tags      = lookup(rule.value, "recovery_point_tags", null)
-      rule_name                = lookup(rule.value, "rule_name")
-      schedule                 = lookup(rule.value, "schedule", null)
-      start_window             = lookup(rule.value, "start_window", null)
-      target_vault_name        = lookup(rule.value, "target_vault_name")
+      completion_window                            = lookup(rule.value, "completion_window", null)
+      enable_continuous_backup                     = lookup(rule.value, "enable_continuous_backup", null)
+      recovery_point_tags                          = lookup(rule.value, "recovery_point_tags", null)
+      rule_name                                    = lookup(rule.value, "rule_name")
+      schedule                                     = lookup(rule.value, "schedule", null)
+      schedule_expression_timezone                 = lookup(rule.value, "schedule_expression_timezone", null)
+      start_window                                 = lookup(rule.value, "start_window", null)
+      target_logically_air_gapped_backup_vault_arn = lookup(rule.value, "target_logically_air_gapped_backup_vault_arn", null)
+      target_vault_name                            = lookup(rule.value, "target_vault_name")
 
       dynamic "lifecycle" {
         for_each = lookup(rule.value, "lifecycle", null) != null ? [true] : []
 
         content {
-          cold_storage_after = lookup(rule.value.lifecycle, "cold_storage_after", null)
-          delete_after       = lookup(rule.value.lifecycle, "delete_after", null)
+          cold_storage_after                        = lookup(rule.value.lifecycle, "cold_storage_after", null)
+          delete_after                              = lookup(rule.value.lifecycle, "delete_after", null)
+          opt_in_to_archive_for_supported_resources = lookup(rule.value.lifecycle, "opt_in_to_archive_for_supported_resources", null)
         }
       }
       dynamic "copy_action" {
@@ -31,8 +36,9 @@ resource "aws_backup_plan" "this" {
           dynamic "lifecycle" {
             for_each = try(lookup(rule.value.copy_action, "lifecycle", null), null) != null ? [true] : []
             content {
-              cold_storage_after = lookup(rule.value.copy_action.lifecycle, "cold_storage_after", null)
-              delete_after       = lookup(rule.value.copy_action.lifecycle, "delete_after", null)
+              cold_storage_after                        = lookup(rule.value.copy_action.lifecycle, "cold_storage_after", null)
+              delete_after                              = lookup(rule.value.copy_action.lifecycle, "delete_after", null)
+              opt_in_to_archive_for_supported_resources = lookup(rule.value.copy_action.lifecycle, "opt_in_to_archive_for_supported_resources", null)
             }
           }
         }
@@ -50,6 +56,7 @@ resource "aws_backup_selection" "this" {
   name          = each.value.name
   plan_id       = aws_backup_plan.this[0].id
   not_resources = try(each.value.not_resources, [])
+  region        = var.region
   resources     = try(each.value.resources, [])
 
 

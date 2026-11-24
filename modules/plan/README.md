@@ -1,3 +1,5 @@
+**English** | [Русский](README.ru.md)
+
 # AWS Backup Plan Terraform module
 
 ## Usage
@@ -43,15 +45,15 @@ module "plan" {
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.17.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.74.0 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.25.0 |
+| ---- | ------- |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.74.0 |
 
 ## Modules
 
@@ -60,7 +62,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_backup_plan.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_plan) | resource |
 | [aws_backup_selection.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_selection) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
@@ -68,19 +70,21 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_backup_selection"></a> [backup\_selection](#input\_backup\_selection) | A list of objects that selects resources for backing up. | `any` | `[]` | no |
 | <a name="input_create"></a> [create](#input\_create) | Controls if resources should be created. | `bool` | `true` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the backup plan to create. | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | Region where the resources will be managed. Defaults to the Region set in the provider configuration. | `string` | `null` | no |
 | <a name="input_rules"></a> [rules](#input\_rules) | A list of rule objects that specifies scheduled tasks that are used to back up a selection of resources. | `any` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all resources. | `map(string)` | `{}` | no |
 
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_arn"></a> [arn](#output\_arn) | The ARN of the backup plan. |
 | <a name="output_id"></a> [id](#output\_id) | The Id of the backup plan. |
 | <a name="output_name"></a> [name](#output\_name) | The display name of a backup plan. |
+| <a name="output_tags_all"></a> [tags\_all](#output\_tags\_all) | A map of tags assigned to the resource. |
 | <a name="output_version"></a> [version](#output\_version) | Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan. |
 <!-- END_TF_DOCS -->

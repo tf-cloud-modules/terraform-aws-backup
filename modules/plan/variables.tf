@@ -15,6 +15,12 @@ variable "tags" {
   default     = {}
 }
 
+variable "region" {
+  description = "Region where the resources will be managed. Defaults to the Region set in the provider configuration."
+  type        = string
+  default     = null
+}
+
 variable "rules" {
   description = "A list of rule objects that specifies scheduled tasks that are used to back up a selection of resources."
   type        = any
