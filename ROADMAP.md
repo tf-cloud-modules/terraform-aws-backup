@@ -10,3 +10,4 @@ This document describes the current status of this project.
 | ✔ | [Add backup_selection option]() ||
 | ✔ | [Add main meta module]() ||
 | ✔ | [Add examples]() ||
+| ✔ | [Support AWS provider v6 (constraint >= 6.74.0)]() ||

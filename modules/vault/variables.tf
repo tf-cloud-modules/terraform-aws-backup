@@ -20,3 +20,15 @@ variable "kms_key_arn" {
   type        = string
   default     = null
 }
+
+variable "force_destroy" {
+  description = "A boolean that indicates that all recovery points stored in the vault are deleted so that the vault can be destroyed without error."
+  type        = bool
+  default     = null
+}
+
+variable "region" {
+  description = "Region where the resources will be managed. Defaults to the Region set in the provider configuration."
+  type        = string
+  default     = null
+}
